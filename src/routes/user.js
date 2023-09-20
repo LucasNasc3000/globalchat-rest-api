@@ -4,7 +4,7 @@ import loginRequired from '../middlewares/loginRequired';
 
 const router = new Router();
 
-router.post('/', userController.store);
+router.post('/', loginRequired, userController.store);
 
 // Estes dois não poderiam ser colocados em uma aplicação real
 router.get('/', userController.index); // Lista todos os usuários, com todos os seus dados
