@@ -1,3 +1,3 @@
 export default {
-  url: process.env.APP_TEST_PORT,
+  url: process.env.APP_URL,
 };
