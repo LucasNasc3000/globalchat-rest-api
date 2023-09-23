@@ -16,7 +16,7 @@ export default {
   },
   storage: multer.diskStorage({ // disk storage vai salvar a foto no servidor (3001 ou o do gcp)
     destination: (req, file, cb) => {
-      cb(null, resolve(__dirname, '..', '..', 'uploads', 'images')); // o primeiro parâmetro é para caso ocorra algum erro
+      cb(null, resolve(__dirname, '..', '..', 'images')); // o primeiro parâmetro é para caso ocorra algum erro
     },
     filename: (req, file, cb) => { // usar o nome original do arquivo traria problemas ao sistema
       cb(null, `${Date.now()}_${aleatorio()}${extname(file.originalname)}`); // muda o nome original do arquivo. Primeiro coloca a data exata do envio do arquivo com o Date.now(), depois extrai somente o .jpg ou .png do nome original do arquivo com a função extname
