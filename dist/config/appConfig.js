@@ -1,3 +1,3 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true});exports. default = {
-  url: process.env.APP_PORT,
+  url: process.env.APP_TEST_PORT,
 };
