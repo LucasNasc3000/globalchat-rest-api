@@ -5,3 +5,5 @@ require('./database');
 const port = process.env.APP_PORT;
 
 _app2.default.listen(port);
+
+console.log(`Acesso na porta http://localhost:${port}`);

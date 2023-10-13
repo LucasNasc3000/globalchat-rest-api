@@ -31,7 +31,7 @@ class TokenController {
       expiresIn: process.env.JWT_EXPIRATION,
     });
 
-    return res.json({ token });
+    return res.json({ token, user: { nome: user.nome, id, email } });
   }
 }
 
