@@ -19,6 +19,7 @@ Nem todo browser usa este cabeçalho (que pode ser undefined também) */
 const whiteList = [
   'http://34.95.243.0',
   'http://localhost:3001',
+  'https://wikipedia.pt.org',
 ];
 
 /* Verifica se o que foi definido pelo browser no cabeçalho origin
