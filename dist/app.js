@@ -15,18 +15,17 @@ var _foto = require('./routes/foto'); var _foto2 = _interopRequireDefault(_foto)
  tentar acessar a api rest por meio de um cabeçalho origin que ele coloca.
 Nem todo browser usa este cabeçalho (que pode ser undefined também) */
 
-const whiteList = [
+/* const whiteList = [
   'http://34.95.243.0',
   'http://localhost:3001',
-  'http://192.168.15.82:3000',
-];
+]; */
 
 /* Verifica se o que foi definido pelo browser no cabeçalho origin
  corresponde a um dos índices da whiteList ou se este cabeçalho não
  existe (não é usado pelo browser). Caso uma destas condições seja
  verdadeira, o cors libera o acesso à api rest
 */
-const corsOptions = {
+/* const corsOptions = {
   origin(origin, callback) {
     if (whiteList.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
@@ -34,7 +33,7 @@ const corsOptions = {
       callback(new Error('not allowed by CORS'));
     }
   },
-};
+}; */
 
 class App {
   constructor() {
@@ -44,7 +43,9 @@ class App {
   }
 
   middlewares() {
-    this.app.use(_cors2.default.call(void 0, corsOptions));
+    this.app.use(_cors2.default.call(void 0, {
+      origin: '*',
+    }));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
     this.app.use(_express2.default.static(_path.resolve.call(void 0, __dirname, '..', 'uploads'))); // Permite acessar arquivos estáticos, neste caso os de dentro da pasta "uploads"
