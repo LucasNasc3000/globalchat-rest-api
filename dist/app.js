@@ -5,7 +5,6 @@ _dotenv2.default.config();
 
 var _express = require('express'); var _express2 = _interopRequireDefault(_express);
 var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors);
-var _helmet = require('helmet'); var _helmet2 = _interopRequireDefault(_helmet);
 var _home = require('./routes/home'); var _home2 = _interopRequireDefault(_home);
 var _user = require('./routes/user'); var _user2 = _interopRequireDefault(_user);
 var _token = require('./routes/token'); var _token2 = _interopRequireDefault(_token);
@@ -46,7 +45,6 @@ class App {
 
   middlewares() {
     this.app.use(_cors2.default.call(void 0, corsOptions));
-    this.app.use(_helmet2.default.call(void 0, ));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
     this.app.use(_express2.default.static(_path.resolve.call(void 0, __dirname, '..', 'uploads'))); // Permite acessar arquivos estáticos, neste caso os de dentro da pasta "uploads"
