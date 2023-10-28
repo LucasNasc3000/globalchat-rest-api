@@ -18,7 +18,7 @@ Nem todo browser usa este cabeçalho (que pode ser undefined também) */
 const whiteList = [
   'http://34.95.243.0',
   'http://localhost:3001',
-  'http://localhost',
+  'http://192.168.15.82:3000',
 ];
 
 /* Verifica se o que foi definido pelo browser no cabeçalho origin
