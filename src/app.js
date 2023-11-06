@@ -48,7 +48,7 @@ class App {
     }));
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
-    this.app.use(express.static(resolve(__dirname, '..', 'uploads', 'images'))); // Permite acessar arquivos estáticos, neste caso os de dentro da pasta "uploads"
+    this.app.use('/images/', express.static(resolve(__dirname, '..', 'uploads', 'images'))); // Permite acessar arquivos estáticos, neste caso os de dentro da pasta "uploads"
   }
 
   routes() {
