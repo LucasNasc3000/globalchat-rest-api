@@ -4,7 +4,7 @@ var _loginRequired = require('../middlewares/loginRequired'); var _loginRequired
 
 const router = new (0, _express.Router)();
 
-router.post('/', _loginRequired2.default, _User2.default.store);
+router.post('/', _User2.default.store);
 
 // Estes dois não poderiam ser colocados em uma aplicação real
 router.get('/', _User2.default.index); // Lista todos os usuários, com todos os seus dados
