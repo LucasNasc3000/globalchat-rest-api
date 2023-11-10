@@ -5,6 +5,7 @@ dotenv.config();
 
 import express from 'express';
 import cors from 'cors';
+import delay from 'express-delay';
 import homeRoutes from './routes/home';
 import userRoutes from './routes/user';
 import tokenRoutes from './routes/token';
@@ -46,6 +47,7 @@ class App {
     this.app.use(cors({
       origin: '*',
     }));
+    this.app.use(delay(2500));
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use('/images/', express.static(resolve(__dirname, '..', 'uploads', 'images'))); // Permite acessar arquivos estáticos, neste caso os de dentro da pasta "uploads"
