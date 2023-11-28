@@ -59,6 +59,14 @@ var _bcryptjs = require('bcryptjs'); var _bcryptjs2 = _interopRequireDefault(_bc
   PasswordValidator(password) {
     return _bcryptjs2.default.compare(password, this.password_hash);
   }
+
+  static associate(models) {
+    this.hasMany(models.Text, { foreignKey: 'user_id' });
+  }
+
+  /* static associate(models) {
+    this.belongsTo(models.Aluno, { foreignKey: 'aluno_id' });
+  } */
 } exports.default = User;
 
 // O tipo virtual faz com que um campo seja considerado apenas virtualmente, ele não vai para o BD

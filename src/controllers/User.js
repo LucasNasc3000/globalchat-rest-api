@@ -1,6 +1,7 @@
 import User from '../models/User';
+import Text from '../models/Text';
 
-class UserController {
+export class UserController {
   async store(req, res) {
     try {
       const novoUser = await User.create(req.body);
@@ -16,7 +17,14 @@ class UserController {
 
   async index(req, res) {
     try {
-      const users = await User.findAll({ attributes: ['id', 'nome', 'email'] }); // O attributes lista somente os campos cujos nomes foram passados no array. Por segurança
+      const users = await User.findAll({
+        attributes: ['id', 'nome', 'email'],
+        order: [['id', 'DESC'], [Text, 'id', 'DESC']],
+        include: {
+          model: Text,
+          attributes: ['id', 'textcontent', 'user_id'],
+        },
+      }); // O attributes lista somente os campos cujos nomes foram passados no array. Por segurança
       return res.json(users);
     } catch (e) {
       return res.json(null);

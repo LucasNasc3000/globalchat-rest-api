@@ -1,6 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User);
+var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text);
 
-class UserController {
+ class UserController {
   async store(req, res) {
     try {
       const novoUser = await _User2.default.create(req.body);
@@ -16,7 +17,14 @@ class UserController {
 
   async index(req, res) {
     try {
-      const users = await _User2.default.findAll({ attributes: ['id', 'nome', 'email'] }); // O attributes lista somente os campos cujos nomes foram passados no array. Por segurança
+      const users = await _User2.default.findAll({
+        attributes: ['id', 'nome', 'email'],
+        order: [['id', 'DESC'], [_Text2.default, 'id', 'DESC']],
+        include: {
+          model: _Text2.default,
+          attributes: ['id', 'textcontent', 'user_id'],
+        },
+      }); // O attributes lista somente os campos cujos nomes foram passados no array. Por segurança
       return res.json(users);
     } catch (e) {
       return res.json(null);
@@ -73,7 +81,7 @@ class UserController {
       });
     }
   }
-}
+} exports.UserController = UserController;
 // A classe UserController já é instanciada na exportação na linha de baixo. Por isso dá para chamar
 // só com userController.store na rota
 // Pode-se usar req body como parâmetro único no User.create caso se queira colocar os dados a serem
