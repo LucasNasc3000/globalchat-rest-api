@@ -1,3 +1,4 @@
+// Tem q dar pm2 restart api a cada vez que fizer push
 import dotenv from 'dotenv';
 
 dotenv.config();

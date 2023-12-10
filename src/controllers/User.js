@@ -33,10 +33,10 @@ export class UserController {
 
   async show(req, res) {
     try {
-      const user = await User.findByPk(req.params.id);
+      const user = await User.findOne({ where: 'email' });
 
-      const { id, nome, email } = user;
-      return res.json({ id, nome, email });
+      const { email } = user;
+      return res.json({ email });
     } catch (e) {
       return res.json(null);
     }

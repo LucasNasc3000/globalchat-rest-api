@@ -7,8 +7,8 @@ const router = new Router();
 router.post('/', userController.store);
 
 // Estes dois não poderiam ser colocados em uma aplicação real
-router.get('/', userController.index); // Lista todos os usuários, com todos os seus dados
-router.get('/:id', userController.show); // Lista um único usuário com todos os dados do mesmo
+// router.get('/', userController.index); // Lista todos os usuários, com todos os seus dados
+router.get('/', userController.search); // Lista um único usuário com todos os dados do mesmo
 
 router.put('/', loginRequired, userController.update);
 router.delete('/', loginRequired, userController.delete);
