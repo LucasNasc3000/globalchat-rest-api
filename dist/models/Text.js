@@ -13,6 +13,19 @@ var _sequelize = require('sequelize'); var _sequelize2 = _interopRequireDefault(
           },
         },
       },
+      email: {
+        type: _sequelize2.default.STRING,
+        defaultValue: '',
+        unique: {
+          msg: 'Email já existente',
+        },
+        validate: {
+          len: {
+            args: [6, 255],
+            msg: 'O campo email deve ter entre 6 e 255 caracteres',
+          },
+        },
+      },
     }, {
       sequelize,
     });

@@ -9,6 +9,11 @@ module.exports = {
         primaryKey: true,
         autoIncrement: 1,
       },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
       nome: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -16,11 +21,6 @@ module.exports = {
       password_hash: {
         type: Sequelize.STRING,
         allowNull: false,
-      },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true,
       },
       created_at: {
         type: Sequelize.DATE,

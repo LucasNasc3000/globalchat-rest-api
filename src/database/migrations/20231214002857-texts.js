@@ -13,15 +13,19 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      user_id: { // Este campo faz com que esta tabela se torne uma tabela filha da tabela usuarios.
-        type: Sequelize.INTEGER, // este campo é uma chave estrangeira para a tabela usuarios
-        allowNull: true,
+      useremail: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'users',
           key: 'id',
         },
-        onDelete: 'CASCADE', // caso o id de um usuario seja deletado, todos os dados na linha deste usuario nesta tabela serão apagados também
-        onUpdate: 'CASCADE', // caso o id de um usuario seja alterado, o id do usuario também será alterado aqui
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       created_at: {
         type: Sequelize.DATE,
