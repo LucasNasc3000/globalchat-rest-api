@@ -46,7 +46,7 @@ class App {
     this.app.use(cors({
       origin: '*',
     }));
-    this.app.use(delay(2500));
+    this.app.use(delay(500));
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
   }

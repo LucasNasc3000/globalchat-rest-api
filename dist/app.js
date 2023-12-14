@@ -46,7 +46,7 @@ class App {
     this.app.use(_cors2.default.call(void 0, {
       origin: '*',
     }));
-    this.app.use(_expressdelay2.default.call(void 0, 2500));
+    this.app.use(_expressdelay2.default.call(void 0, 500));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
   }
