@@ -13,7 +13,7 @@ export default class Text extends Model {
           },
         },
       },
-      email: {
+      useremail: {
         type: Sequelize.STRING,
         defaultValue: '',
         unique: {

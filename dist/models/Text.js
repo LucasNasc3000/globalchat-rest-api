@@ -13,7 +13,7 @@ var _sequelize = require('sequelize'); var _sequelize2 = _interopRequireDefault(
           },
         },
       },
-      email: {
+      useremail: {
         type: _sequelize2.default.STRING,
         defaultValue: '',
         unique: {
