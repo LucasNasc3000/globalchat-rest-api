@@ -1,3 +1,4 @@
+/* eslint-disable no-multi-spaces */
 /* eslint-disable camelcase */
 import Text from '../models/Text';
 
@@ -6,8 +7,12 @@ class TextController {
     try {
       const newTxt = await Text.create(req.body);
 
-      const { id, textcontent, user_id } = newTxt;
-      res.json({ id, textcontent, user_id });
+      const {
+        id, textcontent, useremail,  user_id,
+      } = newTxt;
+      res.json({
+        id, textcontent, useremail, user_id,
+      });
       console.log(newTxt);
     } catch (e) {
       if (res.status !== 200) {
