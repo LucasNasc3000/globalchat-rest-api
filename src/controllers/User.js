@@ -22,21 +22,10 @@ export class UserController {
         order: [['id', 'DESC'], [Text, 'id', 'DESC']],
         include: {
           model: Text,
-          attributes: ['id', 'textcontent', 'user_id'],
+          attributes: ['id', 'textcontent', 'useremail'],
         },
       }); // O attributes lista somente os campos cujos nomes foram passados no array. Por segurança
       return res.json(users);
-    } catch (e) {
-      return res.json(null);
-    }
-  }
-
-  async show(req, res) {
-    try {
-      const user = await User.findOne({ where: 'email' });
-
-      const { email } = user;
-      return res.json({ email });
     } catch (e) {
       return res.json(null);
     }

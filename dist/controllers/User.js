@@ -22,21 +22,10 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
         order: [['id', 'DESC'], [_Text2.default, 'id', 'DESC']],
         include: {
           model: _Text2.default,
-          attributes: ['id', 'textcontent', 'user_id'],
+          attributes: ['id', 'textcontent', 'useremail'],
         },
       }); // O attributes lista somente os campos cujos nomes foram passados no array. Por segurança
       return res.json(users);
-    } catch (e) {
-      return res.json(null);
-    }
-  }
-
-  async show(req, res) {
-    try {
-      const user = await _User2.default.findOne({ where: 'email' });
-
-      const { email } = user;
-      return res.json({ email });
     } catch (e) {
       return res.json(null);
     }

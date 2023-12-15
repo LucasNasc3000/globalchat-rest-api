@@ -16,9 +16,6 @@ export default class Text extends Model {
       useremail: {
         type: Sequelize.STRING,
         defaultValue: '',
-        unique: {
-          msg: 'Email já existente',
-        },
         validate: {
           len: {
             args: [6, 255],
