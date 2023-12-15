@@ -23,6 +23,15 @@ export default class Text extends Model {
           },
         },
       },
+      user_id: {
+        type: Sequelize.INTEGER,
+        defaultValue: '',
+        validate: {
+          isInt: {
+            msg: 'O campo idade precisa ser um número inteiro',
+          },
+        },
+      },
     }, {
       sequelize,
     });

@@ -23,6 +23,15 @@ var _sequelize = require('sequelize'); var _sequelize2 = _interopRequireDefault(
           },
         },
       },
+      user_id: {
+        type: _sequelize2.default.INTEGER,
+        defaultValue: '',
+        validate: {
+          isInt: {
+            msg: 'O campo idade precisa ser um número inteiro',
+          },
+        },
+      },
     }, {
       sequelize,
     });
