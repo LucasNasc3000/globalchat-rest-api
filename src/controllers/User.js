@@ -22,7 +22,7 @@ export class UserController {
         order: [['id', 'DESC'], [Text, 'id', 'DESC']],
         include: {
           model: Text,
-          attributes: ['id', 'textcontent', 'useremail'],
+          attributes: ['id', 'textcontent', 'useremail', 'user_id'],
         },
       }); // O attributes lista somente os campos cujos nomes foram passados no array. Por segurança
       return res.json(users);

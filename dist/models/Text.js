@@ -28,7 +28,7 @@ var _sequelize = require('sequelize'); var _sequelize2 = _interopRequireDefault(
         defaultValue: '',
         validate: {
           isInt: {
-            msg: 'O campo idade precisa ser um número inteiro',
+            msg: 'user_id precisa ser um número inteiro',
           },
         },
       },

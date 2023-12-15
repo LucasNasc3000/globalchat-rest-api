@@ -22,7 +22,7 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
         order: [['id', 'DESC'], [_Text2.default, 'id', 'DESC']],
         include: {
           model: _Text2.default,
-          attributes: ['id', 'textcontent', 'useremail'],
+          attributes: ['id', 'textcontent', 'useremail', 'user_id'],
         },
       }); // O attributes lista somente os campos cujos nomes foram passados no array. Por segurança
       return res.json(users);

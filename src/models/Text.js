@@ -28,7 +28,7 @@ export default class Text extends Model {
         defaultValue: '',
         validate: {
           isInt: {
-            msg: 'O campo idade precisa ser um número inteiro',
+            msg: 'user_id precisa ser um número inteiro',
           },
         },
       },
