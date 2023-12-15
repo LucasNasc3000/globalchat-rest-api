@@ -5,6 +5,6 @@ import loginRequired from '../middlewares/loginRequired';
 const router = new Router();
 
 router.post('/', loginRequired, textController.store);
-router.get('/', loginRequired, textController.index);
+router.get('/', loginRequired, textController.index); // mostrar mensagens e quem enviou
 
 export default router;
