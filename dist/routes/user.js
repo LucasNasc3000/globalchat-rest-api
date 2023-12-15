@@ -7,8 +7,7 @@ const router = new (0, _express.Router)();
 router.post('/', _User2.default.store);
 
 // Estes dois não poderiam ser colocados em uma aplicação real
-// router.get('/', userController.index); // Lista todos os usuários, com todos os seus dados
-router.get('/', _User2.default.search); // Lista um único usuário com todos os dados do mesmo
+router.get('/', _User2.default.index); // Lista todos os usuários, com todos os seus dados
 
 router.put('/', _loginRequired2.default, _User2.default.update);
 router.delete('/', _loginRequired2.default, _User2.default.delete);
