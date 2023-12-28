@@ -52,18 +52,24 @@ export class UserController {
 
   async delete(req, res) {
     try {
-      const user = await User.findByPk(req.userId);
+      const { id } = req.params;
 
-      const { id, nome, email } = user;
-      res.json({ id, nome, email });
+      if (!id) {
+        res.status(400).json({
+          errors: ['ID não encontrado'],
+        });
+      }
+
+      const user = await User.findByPk(id);
+
       if (!user) {
-        return res.status(400).json({
+        res.status(400).json({
           errors: ['O usuário não existe'],
         });
       }
 
       await user.destroy();
-      return res.json(`Usuário ${user.id} deletado`);
+      return res.json(`usuário ${user.id} deletado`);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
