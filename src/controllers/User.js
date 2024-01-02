@@ -52,13 +52,15 @@ export class UserController {
 
   async delete(req, res) {
     try {
-      const user = await User.findByPk(req.params.id);
+      const { id } = req.params;
 
-      if (!user) {
+      if (!id) {
         res.status(400).json({
           errors: ['ID não encontrado'],
         });
       }
+
+      const user = await User.findByPk(id);
 
       if (!user) {
         res.status(400).json({
@@ -67,7 +69,7 @@ export class UserController {
       }
 
       await user.destroy();
-      return res.json(`Aluno ${user.id} deletado`);
+      return res.json(`usuário ${user.id} deletado`);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
