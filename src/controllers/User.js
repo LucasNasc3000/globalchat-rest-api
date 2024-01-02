@@ -54,6 +54,8 @@ export class UserController {
     try {
       const { id } = req.params;
 
+      console.log(req.params);
+
       if (!id) {
         res.status(400).json({
           errors: ['ID não encontrado'],
