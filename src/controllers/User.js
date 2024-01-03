@@ -60,16 +60,16 @@ export class UserController {
         });
       }
 
-      const user = await User.findByPk(userId);
+      const userDelete = await User.findByPk(userId);
 
-      if (!user) {
+      if (!userDelete) {
         res.status(400).json({
           errors: ['O usuário não existe'],
         });
       }
 
-      await user.destroy();
-      return res.json(`usuário ${user.id} deletado`);
+      await userDelete.destroy();
+      return res.json(`usuário ${userDelete.id} deletado`);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
