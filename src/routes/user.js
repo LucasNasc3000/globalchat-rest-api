@@ -10,6 +10,6 @@ router.post('/', userController.store);
 router.get('/', userController.index); // Lista todos os usuários, com todos os seus dados
 
 router.put('/', loginRequired, userController.update);
-router.delete('/:id', loginRequired, userController.delete);
+router.delete('/users/:id', loginRequired, userController.delete);
 
 export default router;
