@@ -56,12 +56,6 @@ export class UserController {
 
       const userDelete = await User.findByPk(id);
 
-      if (!id) {
-        res.status(400).json({
-          errors: ['ID não encontrado'],
-        });
-      }
-
       if (!userDelete) {
         res.status(400).json({
           errors: ['O usuário não existe'],
