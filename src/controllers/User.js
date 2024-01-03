@@ -52,7 +52,7 @@ export class UserController {
 
   async delete(req, res) {
     try {
-      const { userId } = req.params;
+      const { userId } = req;
 
       if (!userId) {
         res.status(400).json({
