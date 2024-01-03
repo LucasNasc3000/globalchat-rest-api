@@ -52,15 +52,15 @@ export class UserController {
 
   async delete(req, res) {
     try {
-      const userId = req.params.id;
+      const { id } = req.params;
 
-      if (!userId) {
+      if (!id) {
         res.status(400).json({
           errors: ['ID não encontrado'],
         });
       }
 
-      const userDelete = await User.findByPk(userId);
+      const userDelete = await User.findByPk(id);
 
       if (!userDelete) {
         res.status(400).json({
