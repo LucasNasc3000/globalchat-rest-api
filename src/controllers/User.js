@@ -54,6 +54,12 @@ export class UserController {
     try {
       const { id } = req.params;
 
+      if (!id) {
+        res.status(400).json({
+          errors: ['ID não encontrado'],
+        });
+      }
+
       const userDelete = await User.findByPk(id);
 
       if (!userDelete) {
