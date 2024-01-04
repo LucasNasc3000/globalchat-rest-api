@@ -60,7 +60,7 @@ export class UserController {
         });
       }
 
-      const userDelete = await User.findOne({ where: { id: { id } } });
+      const userDelete = await User.findByPk(id);
 
       if (!userDelete) {
         res.status(400).json({
