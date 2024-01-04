@@ -52,24 +52,25 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
 
   async delete(req, res) {
     try {
-      const { userId } = req.params;
+      const { id } = req.params;
+      const numberId = Number(id);
 
-      if (!userId) {
+      if (!numberId) {
         res.status(400).json({
           errors: ['ID não encontrado'],
         });
       }
 
-      const user = await _User2.default.findByPk(userId);
+      const userDelete = await _User2.default.findOne({ where: { numberId } });
 
-      if (!user) {
+      if (!userDelete) {
         res.status(400).json({
           errors: ['O usuário não existe'],
         });
       }
 
-      await user.destroy();
-      return res.json(`usuário ${user.id} deletado`);
+      await userDelete.destroy();
+      return res.json(`usuário ${userDelete.id} deletado`);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
