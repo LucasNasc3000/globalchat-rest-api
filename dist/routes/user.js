@@ -10,6 +10,6 @@ router.post('/', _User2.default.store);
 router.get('/', _User2.default.index); // Lista todos os usuários, com todos os seus dados
 
 router.put('/', _loginRequired2.default, _User2.default.update);
-router.delete(':id', _loginRequired2.default, _User2.default.delete);
+router.delete('/:id', _loginRequired2.default, _User2.default.delete);
 
 exports. default = router;
