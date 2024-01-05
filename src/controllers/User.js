@@ -15,7 +15,7 @@ export class UserController {
     }
   }
 
-  async index(req, res) {
+  async usersList(req, res) {
     try {
       const users = await User.findAll({
         attributes: ['id', 'nome', 'email'],

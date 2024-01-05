@@ -5,7 +5,7 @@ import loginRequired from '../middlewares/loginRequired';
 const router = new Router();
 
 router.post('/', userController.store); // Cria o usuário
-router.get('/', userController.index); // Lista todos os usuários, com todos os seus dados
+router.get('/', userController.usersList); // Lista todos os usuários, com todos os seus dados
 router.get('/:useremail', userController.search); // Traz os dados de um usuário
 router.put('/', loginRequired, userController.update); // Atualiza os dados do usuário
 

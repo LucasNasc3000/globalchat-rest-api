@@ -15,7 +15,7 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
     }
   }
 
-  async index(req, res) {
+  async usersList(req, res) {
     try {
       const users = await _User2.default.findAll({
         attributes: ['id', 'nome', 'email'],
