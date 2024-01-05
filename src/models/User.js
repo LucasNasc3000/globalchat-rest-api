@@ -43,6 +43,10 @@ export default class User extends Model {
           },
         },
       },
+      isbanned: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
     }, {
       sequelize,
     });
