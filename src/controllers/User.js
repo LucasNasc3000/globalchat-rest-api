@@ -52,7 +52,7 @@ export class UserController {
 
   async search(req, res) {
     try {
-      const { email } = req.body;
+      const { email = '' } = req.body;
 
       const userFind = await User.findOne({ where: { email } });
 
