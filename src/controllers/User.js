@@ -18,7 +18,7 @@ export class UserController {
   async usersList(req, res) {
     try {
       const users = await User.findAll({
-        attributes: ['id', 'nome', 'email'],
+        attributes: ['id', 'nome', 'email', 'isbanned'],
         order: [['id', 'DESC'], [Text, 'id', 'DESC']],
         include: {
           model: Text,
