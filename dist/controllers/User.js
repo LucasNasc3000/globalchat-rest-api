@@ -80,7 +80,7 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
       where: {
         email: req.params.useremail,
       },
-      attributes: ['id', 'email', 'nome'],
+      attributes: ['id', 'email', 'nome', 'isbanned'],
     });
 
     if (!userFind) {
