@@ -55,8 +55,8 @@ export class UserController {
       const userEmail = req.body.email;
 
       const userFind = await User.findOne({
-        attributes: ['id', 'email', 'nome'],
-        where: { userEmail },
+        where:
+        { email: userEmail },
       });
 
       if (!userFind) {

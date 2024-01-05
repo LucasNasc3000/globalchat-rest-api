@@ -52,9 +52,12 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
 
   async search(req, res) {
     try {
-      const { email } = req.body;
+      const userEmail = req.body.email;
 
-      const userFind = await _User2.default.findOne({ where: { email } });
+      const userFind = await _User2.default.findOne({
+        where:
+        { email: userEmail },
+      });
 
       if (!userFind) {
         res.status(400).json({
@@ -62,9 +65,7 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
         });
       }
 
-      const { id, nome } = userFind;
-
-      return res.json({ id, email, nome });
+      return res.json(userFind);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
