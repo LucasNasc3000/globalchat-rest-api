@@ -52,9 +52,11 @@ export class UserController {
 
   async search(req, res) {
     try {
-      const userEmail = req.body.email;
-
-      const userFind = await User.findOne({ }, { email: userEmail });
+      const userFind = await User.findOne({
+        where: {
+          email: req.body.email,
+        },
+      });
 
       if (!userFind) {
         res.status(400).json({

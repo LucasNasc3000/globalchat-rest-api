@@ -52,9 +52,11 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
 
   async search(req, res) {
     try {
-      const userEmail = req.body.email;
-
-      const userFind = await _User2.default.findOne({ }, { email: userEmail });
+      const userFind = await _User2.default.findOne({
+        where: {
+          email: req.body.email,
+        },
+      });
 
       if (!userFind) {
         res.status(400).json({
