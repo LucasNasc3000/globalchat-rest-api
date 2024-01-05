@@ -54,7 +54,7 @@ export class UserController {
     try {
       const { email = '' } = req.body;
 
-      const userFind = await User.findOne({ where: { email } });
+      const userFind = await User.findOne({ where: { email: { email } } });
 
       if (!userFind) {
         res.status(400).json({
@@ -62,7 +62,7 @@ export class UserController {
         });
       }
 
-      return res.json(userFind);
+      return res.json({ userFind });
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
