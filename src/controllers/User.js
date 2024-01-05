@@ -62,9 +62,7 @@ export class UserController {
         });
       }
 
-      const { id, nome } = userFind;
-
-      return res.json({ id, email, nome });
+      return res.json(userFind);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
