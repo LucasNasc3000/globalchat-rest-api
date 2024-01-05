@@ -72,6 +72,27 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
       });
     }
   }
+
+  async userBan(req, res) {
+    const { isBanned } = req.body;
+
+    const userFind = await _User2.default.findOne({
+      where: {
+        email: req.params.useremail,
+      },
+      attributes: ['id', 'email', 'nome'],
+    });
+
+    if (!userFind) {
+      res.status(400).json({
+        errors: ['O usuário não existe'],
+      });
+    }
+
+    await userFind.update({ isbanned: isBanned });
+
+    return res.json(userFind);
+  }
 } exports.UserController = UserController;
 // A classe UserController já é instanciada na exportação na linha de baixo. Por isso dá para chamar
 // só com userController.store na rota

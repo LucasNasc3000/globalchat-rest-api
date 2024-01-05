@@ -8,5 +8,6 @@ router.post('/', _User2.default.store); // Cria o usuário
 router.get('/', _User2.default.usersList); // Lista todos os usuários, com todos os seus dados
 router.get('/:useremail', _User2.default.search); // Traz os dados de um usuário
 router.put('/', _loginRequired2.default, _User2.default.update); // Atualiza os dados do usuário
+router.put('/', _User2.default.userBan); // Atualiza os dados do usuário
 
 exports. default = router;

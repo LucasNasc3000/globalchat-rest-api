@@ -72,6 +72,27 @@ export class UserController {
       });
     }
   }
+
+  async userBan(req, res) {
+    const { isBanned } = req.body;
+
+    const userFind = await User.findOne({
+      where: {
+        email: req.params.useremail,
+      },
+      attributes: ['id', 'email', 'nome'],
+    });
+
+    if (!userFind) {
+      res.status(400).json({
+        errors: ['O usuário não existe'],
+      });
+    }
+
+    await userFind.update({ isbanned: isBanned });
+
+    return res.json(userFind);
+  }
 }
 // A classe UserController já é instanciada na exportação na linha de baixo. Por isso dá para chamar
 // só com userController.store na rota
