@@ -52,9 +52,11 @@ export class UserController {
 
   async search(req, res) {
     try {
+      const userEmail = req.body.email;
+
       const userFind = await User.findOne({
         attributes: ['id', 'email', 'nome'],
-        where: { email: req.body.email },
+        where: { userEmail },
       });
 
       if (!userFind) {
