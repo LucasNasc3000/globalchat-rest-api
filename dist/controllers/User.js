@@ -54,7 +54,7 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
     try {
       const userFind = await _User2.default.findOne({
         where: {
-          email: req.params.useremail,
+          email: req.body.useremail,
         },
         attributes: ['id', 'email', 'nome'],
       });
