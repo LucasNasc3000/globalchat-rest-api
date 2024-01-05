@@ -4,12 +4,9 @@ var _loginRequired = require('../middlewares/loginRequired'); var _loginRequired
 
 const router = new (0, _express.Router)();
 
-router.post('/', _User2.default.store);
-
-// Estes dois não poderiam ser colocados em uma aplicação real
+router.post('/', _User2.default.store); // Cria o usuário
 router.get('/', _User2.default.index); // Lista todos os usuários, com todos os seus dados
-
-router.put('/', _loginRequired2.default, _User2.default.update);
-router.delete('/:id', _loginRequired2.default, _User2.default.delete);
+router.get('/', _User2.default.search); // Traz os dados de um usuário específico
+router.put('/', _loginRequired2.default, _User2.default.update); // Atualiza os dados do usuário
 
 exports. default = router;

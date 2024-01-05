@@ -50,26 +50,21 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
     }
   }
 
-  async delete(req, res) {
+  async search(req, res) {
     try {
-      const { id } = req.params;
+      const { email } = req.body;
 
-      if (!id) {
-        res.status(400).json({
-          errors: ['ID não encontrado'],
-        });
-      }
+      const userFind = await _User2.default.findOne({ where: { email } });
 
-      const userDelete = await _User2.default.findOne({ where: { id: { id } } });
-
-      if (!userDelete) {
+      if (!userFind) {
         res.status(400).json({
           errors: ['O usuário não existe'],
         });
       }
 
-      await userDelete.destroy();
-      return res.json(`usuário ${userDelete.id} deletado`);
+      const { id, nome } = userFind;
+
+      return res.json({ id, email, nome });
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
