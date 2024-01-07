@@ -56,6 +56,7 @@ export class UserController {
         where: {
           email: req.params.useremail,
         },
+        attributes: ['id', 'nome', 'email', 'isbanned'],
       });
 
       if (!userFind) {
