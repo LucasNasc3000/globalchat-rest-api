@@ -7,6 +7,6 @@ const router = new (0, _express.Router)();
 router.post('/', _User2.default.store); // Cria o usuário
 router.get('/', _loginRequired2.default, _User2.default.usersList); // Lista todos os usuários, com todos os seus dados
 router.get('/:useremail', _loginRequired2.default, _User2.default.search); // Traz os dados de um usuário
-router.put('/:useremail', _loginRequired2.default, _User2.default.userBan); // Atualiza os dados do usuário
+router.put('/:useremail', _loginRequired2.default, _User2.default.userBan); // Bane um usuário (tira o acesso à página mas não deleta a conta)
 
 exports. default = router;

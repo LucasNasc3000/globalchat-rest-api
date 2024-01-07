@@ -56,7 +56,6 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
         where: {
           email: req.params.useremail,
         },
-        attributes: ['id', 'email', 'nome'],
       });
 
       if (!userFind) {
@@ -65,7 +64,13 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
         });
       }
 
-      return res.json(userFind);
+      const {
+        id, email, nome, isbanned,
+      } = userFind;
+
+      return res.json({
+        id, email, nome, isbanned,
+      });
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
