@@ -56,7 +56,7 @@ export class UserController {
         where: {
           email: req.params.useremail,
         },
-        attributes: ['id', 'nome', 'email', 'isbanned'],
+        attributes: ['isbanned', 'id', 'nome', 'email'],
       });
 
       if (!userFind) {
@@ -65,13 +65,7 @@ export class UserController {
         });
       }
 
-      const {
-        id, email, nome, isbanned,
-      } = userFind;
-
-      return res.json({
-        id, email, nome, isbanned,
-      });
+      return res.json(userFind);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
