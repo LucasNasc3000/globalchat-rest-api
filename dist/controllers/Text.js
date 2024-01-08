@@ -25,10 +25,32 @@ class TextController {
 
   async index(req, res) {
     try {
-      const message = await _Text2.default.findAll({ attributes: ['textcontent', 'useremail', 'created_at'],  order: [['id', 'DESC'], ['textcontent', 'DESC'], ['useremail', 'DESC']] }); // O attributes lista somente os campos cujos nomes foram passados no array. Por segurança
+      const message = await _Text2.default.findAll({ attributes: ['textcontent', 'useremail', 'created_at', 'id'] }); // O attributes lista somente os campos cujos nomes foram passados no array. Por segurança
       return res.json(message);
     } catch (e) {
       return res.json(null);
+    }
+  }
+
+  async delete(req, res) {
+    try {
+      const { id } = req.params;
+
+      const deleteMessage = await _Text2.default.findByPk(id);
+
+      if (!deleteMessage) {
+        return res.status(400).json({
+          errors: ['Esta mensagem não existe'],
+        });
+      }
+
+      await deleteMessage.destroy();
+
+      return res.json(`Mensagem ${id} deletada`);
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map((err) => err.message),
+      });
     }
   }
 }

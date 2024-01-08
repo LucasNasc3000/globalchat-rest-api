@@ -4,7 +4,8 @@ var _loginRequired = require('../middlewares/loginRequired'); var _loginRequired
 
 const router = new (0, _express.Router)();
 
-router.post('/', _loginRequired2.default, _Text2.default.store);
+router.post('/', _loginRequired2.default, _Text2.default.store); // cria as mensagens
 router.get('/', _loginRequired2.default, _Text2.default.index); // mostrar mensagens e quem enviou
+router.delete('/:id', _Text2.default.delete); // deleta mensagens
 
 exports. default = router;

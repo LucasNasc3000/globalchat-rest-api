@@ -4,7 +4,8 @@ import loginRequired from '../middlewares/loginRequired';
 
 const router = new Router();
 
-router.post('/', loginRequired, textController.store);
+router.post('/', loginRequired, textController.store); // cria as mensagens
 router.get('/', loginRequired, textController.index); // mostrar mensagens e quem enviou
+router.delete('/:id', textController.delete); // deleta mensagens
 
 export default router;
