@@ -15,5 +15,5 @@ module.exports = {
     createdAt: 'created_at',
     updatedAt: 'updated_at',
   },
-  timezone: 'UTC+0',
+  timezone: '-03:00',
 };
