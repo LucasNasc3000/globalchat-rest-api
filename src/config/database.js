@@ -15,7 +15,7 @@ module.exports = {
     updatedAt: 'updated_at',
   },
   dialectOptions: {
-    timezone: 'America/Araguaina',
+    timezone: 'America/Fortaleza',
   },
-  timezone: 'America/Araguaina',
+  timezone: 'America/Fortaleza',
 };
