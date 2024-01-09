@@ -15,10 +15,7 @@ module.exports = {
     updatedAt: 'updated_at',
   },
   dialectOptions: {
-    dateStrings: true,
-    typeCast: true,
-    timezone: '-03:00',
+    timezone: 'utc America/Sao_Paulo',
   },
-  timezone: '-03:00',
-  operatorsAliases: false,
+  timezone: 'utc America/Sao_Paulo',
 };
