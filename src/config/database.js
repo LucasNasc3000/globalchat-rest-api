@@ -8,14 +8,14 @@ module.exports = {
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE,
   define: {
-    timestamps: false,
+    timestamps: true,
     underscored: true,
     underscoredAll: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
   },
   dialectOptions: {
-    timezone: '-03:00',
+    timezone: 'America/Brasilia',
   },
-  timezone: '-03:00',
+  timezone: 'America/Brasilia',
 };
