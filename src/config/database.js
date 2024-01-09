@@ -15,7 +15,7 @@ module.exports = {
     updatedAt: 'updated_at',
   },
   dialectOptions: {
-    timezone: '-03:00',
+    timezone: 'local',
   },
-  timezone: '-03:00',
+  timezone: 'local',
 };
