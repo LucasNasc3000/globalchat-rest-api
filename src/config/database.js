@@ -9,13 +9,15 @@ module.exports = {
   database: process.env.DATABASE,
   define: {
     timestamps: true,
+    dateStrings: true,
     underscored: true,
     underscoredAll: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
   },
   dialectOptions: {
-    timezone: 'Z',
+    timezone: '-03:00',
+    dateStrings: true,
   },
-  timezone: 'Z',
+  timezone: '-03:00',
 };
