@@ -32,6 +32,10 @@ export default class Text extends Model {
           },
         },
       },
+      msghour: {
+        type: Sequelize.STRING,
+        defaultValue: '',
+      },
     }, {
       sequelize,
     });
