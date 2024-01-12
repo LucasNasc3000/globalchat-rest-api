@@ -26,7 +26,8 @@ class TextController {
   async index(req, res) {
     try {
       const message = await Text.findAll({
-        attributes: ['id', 'msghour', 'created_at', 'useremail'],
+        where: {},
+        attributes: ['id', 'msghour', 'created_at', 'useremail', 'textcontent'],
         order: [['useremail', 'DESC'],  ['created_at', 'DESC'],  ['id', 'DESC'], ['msghour', 'DESC']],
       }); // O attributes lista somente os campos cujos nomes foram passados no array. Por segurança
       return res.json(message);
