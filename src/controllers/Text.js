@@ -1,5 +1,6 @@
 /* eslint-disable no-multi-spaces */
 /* eslint-disable camelcase */
+import { raw } from 'express';
 import Text from '../models/Text';
 
 class TextController {
@@ -25,7 +26,7 @@ class TextController {
 
   async index(req, res) {
     try {
-      const message = await Text.findAll({
+      const message = await Text.findAll(raw, {
         attributes: ['id', 'msghour', 'created_at', 'useremail', 'textcontent'],
         order: [['id', 'DESC']],
       }); // O attributes lista somente os campos cujos nomes foram passados no array. Por segurança
