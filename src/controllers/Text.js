@@ -27,7 +27,7 @@ class TextController {
     try {
       const message = await Text.findAll({
         attributes: ['id', 'msghour', 'created_at', 'useremail', 'textcontent'],
-        order: [['id', 'ASC']],
+        order: [['id', 'DESC']],
       });
       return res.json(message);
     } catch (e) {
