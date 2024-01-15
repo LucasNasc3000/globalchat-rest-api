@@ -26,8 +26,8 @@ class TextController {
   async index(req, res) {
     try {
       const message = await Text.findAll({
-        order: [['created_at', 'DESC']],
         attributes: ['id', 'msghour', 'created_at', 'useremail', 'textcontent'],
+        order: [['textcontent', 'ASC']],
       });
       return res.json(message);
     } catch (e) {
