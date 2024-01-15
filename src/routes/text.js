@@ -7,5 +7,6 @@ const router = new Router();
 router.post('/', loginRequired, textController.store); // cria as mensagens
 router.get('/', loginRequired, textController.index); // mostrar mensagens e quem enviou
 router.delete('/:id', loginRequired, textController.delete); // deleta mensagens
+router.delete('/', loginRequired, textController.deleteAll); // deleta mensagens
 
 export default router;

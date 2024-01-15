@@ -27,7 +27,7 @@ class TextController {
     try {
       const message = await Text.findAll({
         attributes: ['id', 'msghour', 'created_at', 'useremail', 'textcontent'],
-        order: [['created_at', 'DESC']],
+        order: [['id', 'DESC']],
       });
       return res.json(message);
     } catch (e) {
@@ -50,6 +50,17 @@ class TextController {
       await deleteMessage.destroy();
 
       return res.json(`Mensagem ${id} deletada`);
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map((err) => err.message),
+      });
+    }
+  }
+
+  async deleteAll(req, res) {
+    try {
+      await Text.truncate();
+      return res.json('Todas as mensagens foram apagadas');
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
