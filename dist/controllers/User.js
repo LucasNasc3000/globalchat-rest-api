@@ -33,7 +33,7 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
 
   async update(req, res) {
     try {
-      const user = await _User2.default.findByPk(req.userId);
+      const user = await _User2.default.findByPk(req.params.id);
 
       if (!user) {
         return res.status(400).json({
