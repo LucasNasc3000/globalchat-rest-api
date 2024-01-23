@@ -10,6 +10,6 @@ router.get('/', loginRequired, userController.usersList); // Lista todos os usu�
 router.get('/:useremail', loginRequired, userController.search); // Traz os dados de um usuário
 router.put('/:id', loginRequired, userController.update); // Atualiza os dados do usuário (exceto email)
 router.put('/:useremail', loginRequired, userController.userBan); // Bane um usuário (tira o acesso à página mas não deleta a conta)
-router.delete('/:id', userDeleteController.delete); // Deleta um usuário e seus dados
+router.delete('/:id', loginRequired, userDeleteController.delete); // Deleta um usuário e seus dados
 
 export default router;
