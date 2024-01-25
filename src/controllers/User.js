@@ -4,10 +4,10 @@ import Text from '../models/Text';
 export class UserController {
   async store(req, res) {
     try {
-      const { nome, email, password } = req.body;
-      const novoUser = await User.create(nome, email, password);
+      const novoUser = await User.create(req.body);
 
-      res.json(novoUser);
+      const { id, nome, email } = novoUser;
+      res.json({ id, nome, email });
     } catch (e) {
       res.status(400).json({
         errors: e.errors.map((err) => err.message),
