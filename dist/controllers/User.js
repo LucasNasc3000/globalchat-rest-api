@@ -4,10 +4,10 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
  class UserController {
   async store(req, res) {
     try {
-      const novoUser = await _User2.default.create(req.body);
+      const { nome, email, password } = req.body;
+      const novoUser = await _User2.default.create(nome, email, password);
 
-      const { id, nome, email } = novoUser;
-      res.json({ id, nome, email });
+      res.json(novoUser);
     } catch (e) {
       res.status(400).json({
         errors: e.errors.map((err) => err.message),
