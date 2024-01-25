@@ -5,6 +5,7 @@ import userDeleteController from '../controllers/UserDelete';
 
 const router = new Router();
 
+router.post('/', userController.store); // Cria o usuário
 router.get('/', loginRequired, userController.usersList); // Lista todos os usuários, com todos os seus dados
 router.get('/:useremail', loginRequired, userController.search); // Traz os dados de um usuário
 router.put('/:id', loginRequired, userController.update); // Atualiza os dados do usuário (exceto email)
