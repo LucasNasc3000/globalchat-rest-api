@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
+import cors from 'cors';
 import homeRoutes from './routes/home';
 import userRoutes from './routes/user';
 import tokenRoutes from './routes/token';
@@ -41,6 +42,9 @@ class App {
   }
 
   middlewares() {
+    this.app.use(cors({
+      origin: '*',
+    }));
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
   }
