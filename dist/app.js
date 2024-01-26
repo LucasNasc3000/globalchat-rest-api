@@ -7,7 +7,6 @@ var _express = require('express'); var _express2 = _interopRequireDefault(_expre
 var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors);
 var _home = require('./routes/home'); var _home2 = _interopRequireDefault(_home);
 var _user = require('./routes/user'); var _user2 = _interopRequireDefault(_user);
-var _userStore = require('./routes/userStore'); var _userStore2 = _interopRequireDefault(_userStore);
 var _token = require('./routes/token'); var _token2 = _interopRequireDefault(_token);
 var _text = require('./routes/text'); var _text2 = _interopRequireDefault(_text);
 
@@ -53,7 +52,6 @@ class App {
   routes() {
     this.app.use('/', _home2.default);
     this.app.use('/users/', _user2.default);
-    this.app.use('/userStore/', _userStore2.default);
     this.app.use('/tokens/', _token2.default);
     this.app.use('/text/', _text2.default);
   }

@@ -7,7 +7,6 @@ import express from 'express';
 import cors from 'cors';
 import homeRoutes from './routes/home';
 import userRoutes from './routes/user';
-import userStoreRoute from './routes/userStore';
 import tokenRoutes from './routes/token';
 import textRoutes from './routes/text';
 
@@ -53,7 +52,6 @@ class App {
   routes() {
     this.app.use('/', homeRoutes);
     this.app.use('/users/', userRoutes);
-    this.app.use('/userStore/', userStoreRoute);
     this.app.use('/tokens/', tokenRoutes);
     this.app.use('/text/', textRoutes);
   }
