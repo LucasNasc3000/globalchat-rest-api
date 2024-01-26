@@ -53,7 +53,7 @@ class App {
   routes() {
     this.app.use('/', _home2.default);
     this.app.use('/users/', _user2.default);
-    this.app.use('/users/', _userStore2.default);
+    this.app.use('/userStore/', _userStore2.default);
     this.app.use('/tokens/', _token2.default);
     this.app.use('/text/', _text2.default);
   }
