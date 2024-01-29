@@ -5,10 +5,8 @@ export class UserController {
   // eslint-disable-next-line consistent-return
   async store(req, res) {
     try {
-      const novoUser = await User.create(req.body);
-
-      const { id, nome, email } = novoUser;
-      res.json({ id, nome, email });
+      const newUser = await User.create(req.body);
+      return res.json(newUser);
     } catch (e) {
       res.status(400).json({
         errors: e.errors.map((err) => err.message),
