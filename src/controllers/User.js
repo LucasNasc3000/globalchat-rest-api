@@ -8,7 +8,7 @@ export class UserController {
       const novoUser = await User.create(req.body);
 
       const { id, nome, email } = novoUser;
-      return res.json({ id, nome, email });
+      res.json({ id, nome, email });
     } catch (e) {
       res.status(400).json({
         errors: e.errors.map((err) => err.message),
