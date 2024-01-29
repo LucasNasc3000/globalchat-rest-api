@@ -2,12 +2,13 @@
 var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text);
 
  class UserController {
+  // eslint-disable-next-line consistent-return
   async store(req, res) {
     try {
       const novoUser = await _User2.default.create(req.body);
 
       const { id, nome, email } = novoUser;
-      res.json({ id, nome, email });
+      return res.json({ id, nome, email });
     } catch (e) {
       res.status(400).json({
         errors: e.errors.map((err) => err.message),
