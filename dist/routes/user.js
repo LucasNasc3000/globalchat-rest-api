@@ -9,7 +9,7 @@ router.post('/', _User2.default.store); // Cria o usuário
 router.get('/', _loginRequired2.default, _User2.default.usersList); // Lista todos os usuários, com todos os seus dados
 router.get('/:useremail', _loginRequired2.default, _User2.default.search); // Traz os dados de um usuário
 router.put('/:id', _loginRequired2.default, _User2.default.update); // Atualiza os dados do usuário (exceto email)
-router.put('/:useremail', _loginRequired2.default, _User2.default.userBan); // Bane um usuário (tira o acesso à página mas não deleta a conta)
+router.put('/:useremail', _loginRequired2.default, _User2.default.banUser); // Atualiza os dados do usuário (exceto email)
 router.delete('/:id', _loginRequired2.default, _UserDelete2.default.delete); // Deleta um usuário e seus dados
 
 exports. default = router;

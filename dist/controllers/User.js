@@ -1,15 +1,20 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }/* eslint-disable camelcase */
+var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User);
 var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text);
 
  class UserController {
-  // eslint-disable-next-line consistent-return
   async store(req, res) {
     try {
-      const novoUser = await _User2.default.create(req.body);
+      const newUser = await _User2.default.create(req.body);
 
-      const { id, nome, email } = novoUser;
-      return res.json({ id, nome, email });
+      const {
+        id, nome, email, created_at,
+      } = newUser;
+      res.json({
+        id, nome, email, created_at,
+      });
     } catch (e) {
+      console.log(e);
       res.status(400).json({
         errors: e.errors.map((err) => err.message),
       });
@@ -79,25 +84,31 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
     }
   }
 
-  async userBan(req, res) {
-    const { isBanned } = req.body;
+  async banUser(req, res) {
+    try {
+      const { isbanned } = req.body;
 
-    const userFind = await _User2.default.findOne({
-      where: {
-        email: req.params.useremail,
-      },
-      attributes: ['id', 'email', 'nome', 'isbanned'],
-    });
+      const userFind = await _User2.default.findOne({
+        where: {
+          id: req.params.id,
+        },
+        attributes: ['id', 'email', 'nome', 'isbanned'],
+      });
 
-    if (!userFind) {
-      res.status(400).json({
-        errors: ['O usuário não existe'],
+      if (!userFind) {
+        res.status(400).json({
+          errors: ['O usuário não existe'],
+        });
+      }
+
+      await userFind.update({ isbanned });
+
+      return res.json(userFind);
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map((err) => err.message),
       });
     }
-
-    await userFind.update({ isbanned: isBanned });
-
-    return res.json(userFind);
   }
 } exports.UserController = UserController;
 // A classe UserController já é instanciada na exportação na linha de baixo. Por isso dá para chamar

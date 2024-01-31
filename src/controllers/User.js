@@ -1,15 +1,20 @@
+/* eslint-disable camelcase */
 import User from '../models/User';
 import Text from '../models/Text';
 
 export class UserController {
-  // eslint-disable-next-line consistent-return
   async store(req, res) {
     try {
       const newUser = await User.create(req.body);
 
-      const { id, nome, email } = newUser;
-      return res.json({ id, nome, email });
+      const {
+        id, nome, email, created_at,
+      } = newUser;
+      res.json({
+        id, nome, email, created_at,
+      });
     } catch (e) {
+      console.log(e);
       res.status(400).json({
         errors: e.errors.map((err) => err.message),
       });
@@ -79,25 +84,31 @@ export class UserController {
     }
   }
 
-  async userBan(req, res) {
-    const { isBanned } = req.body;
+  async banUser(req, res) {
+    try {
+      const { isbanned } = req.body;
 
-    const userFind = await User.findOne({
-      where: {
-        email: req.params.useremail,
-      },
-      attributes: ['id', 'email', 'nome', 'isbanned'],
-    });
+      const userFind = await User.findOne({
+        where: {
+          id: req.params.id,
+        },
+        attributes: ['id', 'email', 'nome', 'isbanned'],
+      });
 
-    if (!userFind) {
-      res.status(400).json({
-        errors: ['O usuário não existe'],
+      if (!userFind) {
+        res.status(400).json({
+          errors: ['O usuário não existe'],
+        });
+      }
+
+      await userFind.update({ isbanned });
+
+      return res.json(userFind);
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map((err) => err.message),
       });
     }
-
-    await userFind.update({ isbanned: isBanned });
-
-    return res.json(userFind);
   }
 }
 // A classe UserController já é instanciada na exportação na linha de baixo. Por isso dá para chamar

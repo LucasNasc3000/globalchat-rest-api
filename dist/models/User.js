@@ -45,6 +45,7 @@ var _bcryptjs = require('bcryptjs'); var _bcryptjs2 = _interopRequireDefault(_bc
       },
       isbanned: {
         type: _sequelize2.default.BOOLEAN,
+        allowNull: true,
       },
     }, {
       sequelize,
