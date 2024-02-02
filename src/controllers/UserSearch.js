@@ -7,6 +7,7 @@ export class UserSearchController {
         where: {
           email: req.params.useremail,
         },
+        attributes: ['id', 'email', 'nome', 'isbanned'],
       });
 
       if (!userFind) {
@@ -15,13 +16,7 @@ export class UserSearchController {
         });
       }
 
-      const {
-        id, email, nome, isbanned,
-      } = userFind;
-
-      return res.json({
-        id, email, nome, isbanned,
-      });
+      return res.json(userFind);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
@@ -35,6 +30,7 @@ export class UserSearchController {
         where: {
           nome: req.params.username,
         },
+        attributes: ['id', 'email', 'nome', 'isbanned'],
       });
 
       if (!userFind) {
@@ -43,13 +39,7 @@ export class UserSearchController {
         });
       }
 
-      const {
-        id, email, nome, isbanned,
-      } = userFind;
-
-      return res.json({
-        id, email, nome, isbanned,
-      });
+      return res.json(userFind);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
@@ -66,6 +56,7 @@ export class UserSearchController {
         where: {
           id: numberId,
         },
+        attributes: ['id', 'email', 'nome', 'isbanned'],
       });
 
       if (!userFind) {
@@ -74,13 +65,7 @@ export class UserSearchController {
         });
       }
 
-      const {
-        email, nome, isbanned,
-      } = userFind;
-
-      return res.json({
-        id, email, nome, isbanned,
-      });
+      return res.json(userFind);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
