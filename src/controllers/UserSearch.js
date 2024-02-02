@@ -24,10 +24,17 @@ export class UserSearchController {
             },
           });
           break;
-        default:
+        case (/^\d+g/):
           userFind = await User.findOne({
             where: {
               nome: searchValue,
+            },
+          });
+          break;
+        default:
+          userFind = await User.findOne({
+            where: {
+              id: numberId,
             },
           });
       }

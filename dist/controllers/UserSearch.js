@@ -24,10 +24,17 @@
             },
           });
           break;
-        default:
+        case (/^\d+g/):
           userFind = await _User2.default.findOne({
             where: {
               nome: searchValue,
+            },
+          });
+          break;
+        default:
+          userFind = await _User2.default.findOne({
+            where: {
+              id: numberId,
             },
           });
       }
