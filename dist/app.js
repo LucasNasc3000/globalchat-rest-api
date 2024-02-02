@@ -55,9 +55,9 @@ class App {
   routes() {
     this.app.use('/', _home2.default);
     this.app.use('/users/', _user2.default);
-    this.app.use('/users/search/:usermail', _userSearchEmail2.default);
-    this.app.use('/users/search/:username', _userSearchName2.default);
-    this.app.use('/users/search/:id', _userSearchId2.default);
+    this.app.use('/users/search/email/', _userSearchEmail2.default);
+    this.app.use('/users/search/name/', _userSearchName2.default);
+    this.app.use('/users/search/id/', _userSearchId2.default);
     this.app.use('/tokens/', _token2.default);
     this.app.use('/text/', _text2.default);
   }
