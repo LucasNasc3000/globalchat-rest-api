@@ -56,55 +56,6 @@ export class UserController {
     }
   }
 
-  async search(req, res) {
-    const { searchValue } = req.params;
-    const numberId = Number(searchValue);
-    let userFind = {};
-    const type = typeof (userFind);
-    try {
-      switch (searchValue) {
-        case (searchValue === (/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)):
-          userFind = await User.findOne({
-            where: {
-              email: searchValue,
-            },
-          });
-          break;
-        case (searchValue === (/^[0-9]+$/)):
-          userFind = await User.findOne({
-            where: {
-              id: numberId,
-            },
-          });
-          break;
-        default:
-          userFind = await User.findOne({
-            where: {
-              nome: searchValue,
-            },
-          });
-      }
-
-      if (!userFind) {
-        res.status(400).json({
-          errors: ['O usuário não existe'],
-        });
-      }
-
-      const {
-        id, email, nome, isbanned,
-      } = userFind;
-
-      return res.json({
-        id, email, nome, isbanned, type,
-      });
-    } catch (e) {
-      return res.status(400).json({
-        errors: e.errors.map((err) => err.message),
-      });
-    }
-  }
-
   async banUser(req, res) {
     try {
       const { isbanned } = req.body;
@@ -125,6 +76,33 @@ export class UserController {
       await userFind.update({ isbanned });
 
       return res.json(userFind);
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map((err) => err.message),
+      });
+    }
+  }
+
+  async delete(req, res) {
+    try {
+      const { id } = req.params;
+
+      if (!id) {
+        res.status(400).json({
+          errors: ['ID não encontrado'],
+        });
+      }
+
+      const user = await User.findByPk(id);
+
+      if (!user) {
+        res.status(400).json({
+          errors: ['O user não existe'],
+        });
+      }
+
+      await user.destroy();
+      return res.json(`usuário ${user.id} deletado`);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
