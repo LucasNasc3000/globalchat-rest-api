@@ -9,6 +9,9 @@ var _home = require('./routes/home'); var _home2 = _interopRequireDefault(_home)
 var _user = require('./routes/user'); var _user2 = _interopRequireDefault(_user);
 var _token = require('./routes/token'); var _token2 = _interopRequireDefault(_token);
 var _text = require('./routes/text'); var _text2 = _interopRequireDefault(_text);
+var _userSearchEmail = require('./routes/userSearchEmail'); var _userSearchEmail2 = _interopRequireDefault(_userSearchEmail);
+var _userSearchName = require('./routes/userSearchName'); var _userSearchName2 = _interopRequireDefault(_userSearchName);
+var _userSearchId = require('./routes/userSearchId'); var _userSearchId2 = _interopRequireDefault(_userSearchId);
 
 /* O parâmetro origin vai ser setado (definido) pelo browser quando algum domínio ou ip tentar
  tentar acessar a api rest por meio de um cabeçalho origin que ele coloca.
@@ -52,6 +55,9 @@ class App {
   routes() {
     this.app.use('/', _home2.default);
     this.app.use('/users/', _user2.default);
+    this.app.use('/users/search/:usermail', _userSearchEmail2.default);
+    this.app.use('/users/search/:username', _userSearchName2.default);
+    this.app.use('/users/search/:id', _userSearchId2.default);
     this.app.use('/tokens/', _token2.default);
     this.app.use('/text/', _text2.default);
   }

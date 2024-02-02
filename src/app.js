@@ -9,6 +9,9 @@ import homeRoutes from './routes/home';
 import userRoutes from './routes/user';
 import tokenRoutes from './routes/token';
 import textRoutes from './routes/text';
+import userSearchEmail from './routes/userSearchEmail';
+import userSearchName from './routes/userSearchName';
+import userSearchId from './routes/userSearchId';
 
 /* O parâmetro origin vai ser setado (definido) pelo browser quando algum domínio ou ip tentar
  tentar acessar a api rest por meio de um cabeçalho origin que ele coloca.
@@ -52,6 +55,9 @@ class App {
   routes() {
     this.app.use('/', homeRoutes);
     this.app.use('/users/', userRoutes);
+    this.app.use('/users/search/:usermail', userSearchEmail);
+    this.app.use('/users/search/:username', userSearchName);
+    this.app.use('/users/search/:id', userSearchId);
     this.app.use('/tokens/', tokenRoutes);
     this.app.use('/text/', textRoutes);
   }
