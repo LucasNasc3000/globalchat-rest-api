@@ -58,20 +58,22 @@ export class UserController {
 
   async search(req, res) {
     const { searchValue } = req.params;
+    const numberId = Number(searchValue);
     let userFind = '';
+    const type = typeof (userFind);
     try {
       switch (searchValue) {
-        case (/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/):
+        case (searchValue === (/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)):
           userFind = await User.findOne({
             where: {
               email: searchValue,
             },
           });
           break;
-        case (/^[0-9]+$/):
+        case (searchValue === (/^[0-9]+$/)):
           userFind = await User.findOne({
             where: {
-              id: searchValue,
+              id: numberId,
             },
           });
           break;
@@ -94,7 +96,7 @@ export class UserController {
       } = userFind;
 
       return res.json({
-        id, email, nome, isbanned,
+        id, email, nome, isbanned, type,
       });
     } catch (e) {
       return res.status(400).json({
