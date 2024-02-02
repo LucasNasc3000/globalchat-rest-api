@@ -57,12 +57,31 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
   }
 
   async search(req, res) {
+    const { searchValue } = req.params;
+    let userFind = '';
     try {
-      const userFind = await _User2.default.findOne({
-        where: {
-          email: req.params.useremail,
-        },
-      });
+      switch (searchValue) {
+        case (/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/):
+          userFind = await _User2.default.findOne({
+            where: {
+              email: searchValue,
+            },
+          });
+          break;
+        case (/^[0-9]+$/):
+          userFind = await _User2.default.findOne({
+            where: {
+              id: searchValue,
+            },
+          });
+          break;
+        default:
+          userFind = await _User2.default.findOne({
+            where: {
+              nome: searchValue,
+            },
+          });
+      }
 
       if (!userFind) {
         res.status(400).json({
