@@ -59,7 +59,7 @@ export class UserController {
   async search(req, res) {
     const { searchValue } = req.params;
     const numberId = Number(searchValue);
-    let userFind = '';
+    let userFind = {};
     const type = typeof (userFind);
     try {
       switch (searchValue) {
