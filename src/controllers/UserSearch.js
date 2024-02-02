@@ -4,25 +4,23 @@ export class UserSearchController {
   async search(req, res) {
     const { searchValue } = req.params;
     const numberId = Number(searchValue);
-    const idParam = /^[0-9]+$/;
-    const emailParam = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     let userFind = '';
 
     try {
-      if (searchValue === emailParam) {
-        userFind = await User.findOne({
-          where: {
-            email: searchValue,
-          },
-        });
-      } if (searchValue === (/^\d+g/)) {
+      if (searchValue.match(/^[A-Z]+$/i)) {
         userFind = await User.findOne({
           where: {
             nome: searchValue,
           },
         });
+      } if (searchValue.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) {
+        userFind = await User.findOne({
+          where: {
+            email: searchValue,
+          },
+        });
       }
-      if (searchValue === idParam) {
+      if (searchValue.match(/^[0-9]+$/)) {
         userFind = await User.findOne({
           where: {
             id: numberId,
