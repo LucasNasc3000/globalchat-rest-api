@@ -7,16 +7,16 @@ export class UserSearchController {
     let userFind = '';
 
     try {
-      if (searchValue.match(/^\d+g/)) {
-        userFind = await User.findAll({
-          where: {
-            nome: searchValue,
-          },
-        });
-      } if (searchValue.length === '@') {
+      if (searchValue.contains('@')) {
         userFind = await User.findAll({
           where: {
             email: searchValue,
+          },
+        });
+      } if (searchValue === String) {
+        userFind = await User.findAll({
+          where: {
+            nome: searchValue,
           },
         });
       }
