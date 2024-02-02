@@ -9,34 +9,25 @@ export class UserSearchController {
     let userFind = '';
 
     try {
-      switch (searchValue) {
-        case (searchValue === emailParam):
-          userFind = await User.findOne({
-            where: {
-              email: searchValue,
-            },
-          });
-          break;
-        case (searchValue === idParam):
-          userFind = await User.findOne({
-            where: {
-              id: numberId,
-            },
-          });
-          break;
-        case (/^\d+g/):
-          userFind = await User.findOne({
-            where: {
-              nome: searchValue,
-            },
-          });
-          break;
-        default:
-          userFind = await User.findOne({
-            where: {
-              id: numberId,
-            },
-          });
+      if (searchValue === emailParam) {
+        userFind = await User.findOne({
+          where: {
+            email: searchValue,
+          },
+        });
+      } if (searchValue === (/^\d+g/)) {
+        userFind = await User.findOne({
+          where: {
+            nome: searchValue,
+          },
+        });
+      }
+      if (searchValue === idParam) {
+        userFind = await User.findOne({
+          where: {
+            id: numberId,
+          },
+        });
       }
 
       if (!userFind) {
