@@ -7,21 +7,21 @@ export class UserSearchController {
     let userFind = '';
 
     try {
-      if (searchValue.match(/^[A-Z]+$/i)) {
-        userFind = await User.findOne({
+      if (searchValue.match(/^\d+g/)) {
+        userFind = await User.findAll({
           where: {
             nome: searchValue,
           },
         });
-      } if (searchValue.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) {
-        userFind = await User.findOne({
+      } if (searchValue.length === '@') {
+        userFind = await User.findAll({
           where: {
             email: searchValue,
           },
         });
       }
       if (searchValue.match(/^[0-9]+$/)) {
-        userFind = await User.findOne({
+        userFind = await User.findAll({
           where: {
             id: numberId,
           },
@@ -30,7 +30,7 @@ export class UserSearchController {
 
       if (!userFind) {
         res.status(400).json({
-          errors: ['O usuário não existe'],
+          errors: ['Usuário não encontrado'],
         });
       }
 
@@ -42,6 +42,7 @@ export class UserSearchController {
         id, email, nome, isbanned,
       });
     } catch (e) {
+      console.log(e);
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
       });
