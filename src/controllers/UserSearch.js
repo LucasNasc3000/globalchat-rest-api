@@ -16,6 +16,8 @@ export class UserSearchController {
         });
       }
 
+      if (userFind === null || userFind === '') return res.json('Usuário não encontrado');
+
       return res.json(userFind);
     } catch (e) {
       return res.status(400).json({
@@ -38,6 +40,8 @@ export class UserSearchController {
           errors: ['Usuário não encontrado'],
         });
       }
+
+      if (userFind === null || userFind === '') return res.json('Usuário não encontrado');
 
       return res.json(userFind);
     } catch (e) {
@@ -64,6 +68,8 @@ export class UserSearchController {
           errors: ['Usuário não encontrado'],
         });
       }
+
+      if (userFind === null || userFind === '') return res.json('Usuário não encontrado');
 
       return res.json(userFind);
     } catch (e) {
