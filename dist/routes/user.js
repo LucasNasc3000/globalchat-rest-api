@@ -10,6 +10,8 @@ router.get('/', _loginRequired2.default, _User2.default.usersList); // Lista tod
 router.delete('/:id', _loginRequired2.default, _User2.default.delete); // Deleta um usuário e seus dados
 router.put('/:id', _loginRequired2.default, _User2.default.update); // Atualiza os dados do usuário (exceto email)
 router.put('/:useremail', _loginRequired2.default, _User2.default.banUser); // Atualiza os dados do usuário (exceto email)
-router.get('/:searchValue', _loginRequired2.default, _UserSearch2.default.search); // Pesquisa um usuário
+router.get('/:useremail', _loginRequired2.default, _UserSearch2.default.searchByEmail); // Pesquisa um usuário pelo email
+router.get('/:username', _loginRequired2.default, _UserSearch2.default.searchByName); // Pesquisa um usuário pelo nome
+router.get('/:id', _loginRequired2.default, _UserSearch2.default.searchById); // Pesquisa um usuário pelo id
 
 exports. default = router;

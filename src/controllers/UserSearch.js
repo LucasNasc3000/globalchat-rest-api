@@ -1,32 +1,13 @@
 import User from '../models/User';
 
 export class UserSearchController {
-  async search(req, res) {
-    const { searchValue } = req.params;
-    const numberId = Number(searchValue);
-    let userFind = '';
-
+  async searchByEmail(req, res) {
     try {
-      if (searchValue.contains('@')) {
-        userFind = await User.findAll({
-          where: {
-            email: searchValue,
-          },
-        });
-      } if (searchValue === String) {
-        userFind = await User.findAll({
-          where: {
-            nome: searchValue,
-          },
-        });
-      }
-      if (searchValue.match(/^[0-9]+$/)) {
-        userFind = await User.findAll({
-          where: {
-            id: numberId,
-          },
-        });
-      }
+      const userFind = await User.findAll({
+        where: {
+          email: req.params.useremail,
+        },
+      });
 
       if (!userFind) {
         res.status(400).json({
@@ -42,7 +23,65 @@ export class UserSearchController {
         id, email, nome, isbanned,
       });
     } catch (e) {
-      console.log(e);
+      return res.status(400).json({
+        errors: e.errors.map((err) => err.message),
+      });
+    }
+  }
+
+  async searchByName(req, res) {
+    try {
+      const userFind = await User.findAll({
+        where: {
+          nome: req.params.username,
+        },
+      });
+
+      if (!userFind) {
+        res.status(400).json({
+          errors: ['Usuário não encontrado'],
+        });
+      }
+
+      const {
+        id, email, nome, isbanned,
+      } = userFind;
+
+      return res.json({
+        id, email, nome, isbanned,
+      });
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map((err) => err.message),
+      });
+    }
+  }
+
+  async searchById(req, res) {
+    try {
+      const { id } = req.params;
+      const numberId = Number(id);
+
+      const userFind = await User.findAll({
+        where: {
+          id: numberId,
+        },
+      });
+
+      if (!userFind) {
+        res.status(400).json({
+          errors: ['Usuário não encontrado'],
+        });
+      }
+
+      const {
+        email, nome, isbanned,
+      } = userFind;
+
+      return res.json({
+        id, email, nome, isbanned,
+      });
+    } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
       });

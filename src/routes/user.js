@@ -10,6 +10,8 @@ router.get('/', loginRequired, userController.usersList); // Lista todos os usu�
 router.delete('/:id', loginRequired, userController.delete); // Deleta um usuário e seus dados
 router.put('/:id', loginRequired, userController.update); // Atualiza os dados do usuário (exceto email)
 router.put('/:useremail', loginRequired, userController.banUser); // Atualiza os dados do usuário (exceto email)
-router.get('/:searchValue', loginRequired, userSearchController.search); // Pesquisa um usuário
+router.get('/:useremail', loginRequired, userSearchController.searchByEmail); // Pesquisa um usuário pelo email
+router.get('/:username', loginRequired, userSearchController.searchByName); // Pesquisa um usuário pelo nome
+router.get('/:id', loginRequired, userSearchController.searchById); // Pesquisa um usuário pelo id
 
 export default router;

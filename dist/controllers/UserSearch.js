@@ -1,52 +1,81 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User);
 
  class UserSearchController {
-  async search(req, res) {
-    const { searchValue } = req.params;
-    const numberId = Number(searchValue);
-    const idParam = /^[0-9]+$/;
-    const emailParam = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    let userFind = '';
-
+  async searchByEmail(req, res) {
     try {
-      switch (searchValue) {
-        case (searchValue === emailParam):
-          userFind = await _User2.default.findOne({
-            where: {
-              email: searchValue,
-            },
-          });
-          break;
-        case (searchValue === idParam):
-          userFind = await _User2.default.findOne({
-            where: {
-              id: numberId,
-            },
-          });
-          break;
-        case (/^\d+g/):
-          userFind = await _User2.default.findOne({
-            where: {
-              nome: searchValue,
-            },
-          });
-          break;
-        default:
-          userFind = await _User2.default.findOne({
-            where: {
-              id: numberId,
-            },
-          });
-      }
+      const userFind = await _User2.default.findAll({
+        where: {
+          email: req.params.useremail,
+        },
+      });
 
       if (!userFind) {
         res.status(400).json({
-          errors: ['O usuário não existe'],
+          errors: ['Usuário não encontrado'],
         });
       }
 
       const {
         id, email, nome, isbanned,
+      } = userFind;
+
+      return res.json({
+        id, email, nome, isbanned,
+      });
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map((err) => err.message),
+      });
+    }
+  }
+
+  async searchByName(req, res) {
+    try {
+      const userFind = await _User2.default.findAll({
+        where: {
+          nome: req.params.username,
+        },
+      });
+
+      if (!userFind) {
+        res.status(400).json({
+          errors: ['Usuário não encontrado'],
+        });
+      }
+
+      const {
+        id, email, nome, isbanned,
+      } = userFind;
+
+      return res.json({
+        id, email, nome, isbanned,
+      });
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map((err) => err.message),
+      });
+    }
+  }
+
+  async searchById(req, res) {
+    try {
+      const { id } = req.params;
+      const numberId = Number(id);
+
+      const userFind = await _User2.default.findAll({
+        where: {
+          id: numberId,
+        },
+      });
+
+      if (!userFind) {
+        res.status(400).json({
+          errors: ['Usuário não encontrado'],
+        });
+      }
+
+      const {
+        email, nome, isbanned,
       } = userFind;
 
       return res.json({
