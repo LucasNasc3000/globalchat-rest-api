@@ -3,10 +3,13 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User';
 
 class TokenController {
+  // Cria o JWT baseado no email e senha que o usuário enviar no front-end para fazer login.
+  // É feita uma pesquisa com o email enviado para verificar se ele existe, depois uma validação
+  // de senha. Se ambos os dados forem confirmados o JWT é gerado para o usuário.
   async store(req, res) {
     const { email = '', password = '' } = req.body;
 
-    if (!email || !password) { // Voltar aqui para otimizar esta parte
+    if (!email || !password) {
       return res.status(401).json({
         errors: ['Credenciais inválidas'],
       });
@@ -26,7 +29,7 @@ class TokenController {
       });
     }
 
-    const { id } = user; // Destructor? R: sim. Não tem id no model do user R: n sei pq
+    const { id } = user;
     const token = jwt.sign({ id, email }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPIRATION,
     });

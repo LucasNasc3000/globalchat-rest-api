@@ -1,5 +1,8 @@
 import User from '../models/User';
 
+/* Os métodos desta classe fazem todos a mesma coisa, que é procurar todos os usuários com deter-
+minados dados na base de dados, o que muda são estes determinados dados, que podem ser: id, email
+ou nome */
 export class UserSearchController {
   async searchByEmail(req, res) {
     try {

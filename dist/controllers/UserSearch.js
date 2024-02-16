@@ -1,5 +1,8 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User);
 
+/* Os métodos desta classe fazem todos a mesma coisa, que é procurar todos os usuários com deter-
+minados dados na base de dados, o que muda são estes determinados dados, que podem ser: id, email
+ou nome */
  class UserSearchController {
   async searchByEmail(req, res) {
     try {
@@ -15,6 +18,8 @@
           errors: ['Usuário não encontrado'],
         });
       }
+
+      if (userFind === null || userFind === '') return res.json('Usuário não encontrado');
 
       return res.json(userFind);
     } catch (e) {
@@ -38,6 +43,8 @@
           errors: ['Usuário não encontrado'],
         });
       }
+
+      if (userFind === null || userFind === '') return res.json('Usuário não encontrado');
 
       return res.json(userFind);
     } catch (e) {
@@ -64,6 +71,8 @@
           errors: ['Usuário não encontrado'],
         });
       }
+
+      if (userFind === null || userFind === '') return res.json('Usuário não encontrado');
 
       return res.json(userFind);
     } catch (e) {

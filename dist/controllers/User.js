@@ -3,6 +3,10 @@ var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User
 var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text);
 
  class UserController {
+  // Cria novos usuários na base de dados com os dados enviados pelo front-end, que vem para este
+  // método através do req.body
+  // eslint-disable-next-line max-len
+  // Depois todos os dados relativos à mensagem são exibidos (neste caso em aplicativos de design de API, não na aplicação)
   async store(req, res) {
     try {
       const newUser = await _User2.default.create(req.body);
@@ -21,6 +25,8 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
     }
   }
 
+  // lista todos os usuários e os dados relativos a eles para o front-end e mostra também os
+  // dados em json para aplicativos de design de API, como o insomnia, usado neste projeto.
   async usersList(req, res) {
     try {
       const users = await _User2.default.findAll({
@@ -37,6 +43,9 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
     }
   }
 
+  // Busca um usuário na base de dados de acordo com o id, que este método obtêm da url e se este
+  // usuário existir seus dados serão atualizados de acordo com os dados que vierem do front-end
+  // através do req.body
   async update(req, res) {
     try {
       const user = await _User2.default.findByPk(req.params.id);
@@ -56,6 +65,9 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
     }
   }
 
+  // Altera o campo isbanned, false por padrão, para true de um usuário, que é especificado de
+  // acordo com a busca feita na base de dados com base no id na url.
+  // No front-end o acesso do usuário à página será bloqueado.
   async banUser(req, res) {
     try {
       const { isbanned } = req.body;
@@ -83,6 +95,7 @@ var _Text = require('../models/Text'); var _Text2 = _interopRequireDefault(_Text
     }
   }
 
+  // Deleta um usuário específico de acordo com o id que virá da url
   async delete(req, res) {
     try {
       const { id } = req.params;

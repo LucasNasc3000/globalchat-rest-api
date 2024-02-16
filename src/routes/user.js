@@ -7,6 +7,6 @@ const router = new Router();
 router.post('/', userController.store); // Cria o usuário
 router.get('/', loginRequired, userController.usersList); // Lista todos os usuários, com todos os seus dados
 router.delete('/:id', loginRequired, userController.delete); // Deleta um usuário e seus dados
-router.put('/:id', loginRequired, userController.update); // Atualiza os dados do usuário (exceto email)
+router.put('/:id', loginRequired, userController.update); // Atualiza os dados do usuário. Também é usado para a função de banir
 
 export default router;

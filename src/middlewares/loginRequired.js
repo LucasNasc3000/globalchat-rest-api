@@ -3,6 +3,8 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User';
 
 export default async (req, res, next) => {
+  // Das linhas 8 a 16 ocorre uma verificação da existência ou não do campo authorization no
+  // cabeçalho da requisição
   const { authorization } = req.headers;
 
   if (!authorization) {
@@ -17,7 +19,7 @@ export default async (req, res, next) => {
     const dados = jwt.verify(token, process.env.JWT_SECRET);
     const { email, id } = dados;
 
-    // --> checa se o id e o email são os mesmos que foram usados para gerar o token
+    // Checa se o id e o email são os mesmos que foram usados para gerar o token
     const user = await User.findOne({
       where: {
         id,

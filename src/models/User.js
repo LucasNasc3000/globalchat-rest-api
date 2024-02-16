@@ -67,10 +67,6 @@ export default class User extends Model {
   static associate(models) {
     this.hasMany(models.Text, { foreignKey: 'user_id' });
   }
-
-  /* static associate(models) {
-    this.belongsTo(models.Aluno, { foreignKey: 'aluno_id' });
-  } */
 }
 
 // O tipo virtual faz com que um campo seja considerado apenas virtualmente, ele não vai para o BD

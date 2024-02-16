@@ -3,6 +3,8 @@ var _jsonwebtoken = require('jsonwebtoken'); var _jsonwebtoken2 = _interopRequir
 var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User);
 
 exports. default = async (req, res, next) => {
+  // Das linhas 8 a 16 ocorre uma verificação da existência ou não do campo authorization no
+  // cabeçalho da requisição
   const { authorization } = req.headers;
 
   if (!authorization) {
@@ -17,7 +19,7 @@ exports. default = async (req, res, next) => {
     const dados = _jsonwebtoken2.default.verify(token, process.env.JWT_SECRET);
     const { email, id } = dados;
 
-    // --> checa se o id e o email são os mesmos que foram usados para gerar o token
+    // Checa se o id e o email são os mesmos que foram usados para gerar o token
     const user = await _User2.default.findOne({
       where: {
         id,

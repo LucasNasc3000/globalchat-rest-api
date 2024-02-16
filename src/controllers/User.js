@@ -3,6 +3,10 @@ import User from '../models/User';
 import Text from '../models/Text';
 
 export class UserController {
+  // Cria novos usuários na base de dados com os dados enviados pelo front-end, que vem para este
+  // método através do req.body
+  // eslint-disable-next-line max-len
+  // Depois todos os dados relativos à mensagem são exibidos (neste caso em aplicativos de design de API, não na aplicação)
   async store(req, res) {
     try {
       const newUser = await User.create(req.body);
@@ -21,6 +25,8 @@ export class UserController {
     }
   }
 
+  // lista todos os usuários e os dados relativos a eles para o front-end e mostra também os
+  // dados em json para aplicativos de design de API, como o insomnia, usado neste projeto.
   async usersList(req, res) {
     try {
       const users = await User.findAll({
@@ -37,6 +43,9 @@ export class UserController {
     }
   }
 
+  // Busca um usuário na base de dados de acordo com o id, que este método obtêm da url e se este
+  // usuário existir seus dados serão atualizados de acordo com os dados que vierem do front-end
+  // através do req.body
   async update(req, res) {
     try {
       const user = await User.findByPk(req.params.id);
@@ -56,6 +65,9 @@ export class UserController {
     }
   }
 
+  // Altera o campo isbanned, false por padrão, para true de um usuário, que é especificado de
+  // acordo com a busca feita na base de dados com base no id na url.
+  // No front-end o acesso do usuário à página será bloqueado.
   async banUser(req, res) {
     try {
       const { isbanned } = req.body;
@@ -83,6 +95,7 @@ export class UserController {
     }
   }
 
+  // Deleta um usuário específico de acordo com o id que virá da url
   async delete(req, res) {
     try {
       const { id } = req.params;
