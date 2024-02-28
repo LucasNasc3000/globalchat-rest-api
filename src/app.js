@@ -19,6 +19,11 @@ class App {
     this.routes();
   }
 
+  /*
+   O correto e recomendado é escrever em um array os endereços ip ou domínios que podem ter
+   acesso à API (configuração do cors), essas configurações não estão aqui no entanto devido
+   a um erro que não consegui solucionar e que impedia o uso desta API pela aplicação web.
+   */
   middlewares() {
     this.app.use(cors({
       origin: '*',
