@@ -1,7 +1,7 @@
 # Global Chat Rest API
 
 Esta API rest foi desenvolvida especificamente para ser o lado do servidor no projeto Global Chat.
-Sendo uma API, ela será responsável por lidar com as requisições HTTP e devolver informações e
+Sendo uma API, ela será responsável por lidar com as requisições HTTP, operações com o banco de dados e devolver informações e
 dados ao front-end.
 
 Esta API até então foi escrita para lidar com dados simples de texto, já que a aplicação se trata de uma
