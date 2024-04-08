@@ -4,7 +4,7 @@ dotenv.config();
 
 import express from 'express';
 import cors from 'cors';
-// import homeRoutes from './routes/home';
+import homeRoutes from './routes/home';
 import userRoutes from './routes/user';
 import tokenRoutes from './routes/token';
 import textRoutes from './routes/text';
@@ -33,6 +33,7 @@ class App {
   }
 
   routes() {
+    this.app.use('/', homeRoutes);
     this.app.use('/users/', userRoutes);
     this.app.use('/users/search/email/', userSearchEmail);
     this.app.use('/users/search/name/', userSearchName);
