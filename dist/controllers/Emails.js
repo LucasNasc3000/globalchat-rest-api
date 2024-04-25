@@ -6,9 +6,6 @@ class EmailsController {
     try {
       const transporter = _nodemailer.createTransport.call(void 0, {
         service: 'gmail',
-        tls: {
-          rejectUnauthorized: false,
-        },
         auth: {
           type: 'OAuth2',
           user: process.env.MAIL_USERNAME,
