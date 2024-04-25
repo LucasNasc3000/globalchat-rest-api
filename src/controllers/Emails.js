@@ -6,6 +6,9 @@ class EmailsController {
     try {
       const transporter = createTransport({
         service: 'gmail',
+        tls: {
+          rejectUnauthorized: false,
+        },
         auth: {
           type: 'OAuth2',
           user: process.env.MAIL_USERNAME,
