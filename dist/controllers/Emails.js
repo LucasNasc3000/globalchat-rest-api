@@ -6,6 +6,9 @@ class EmailsController {
     try {
       const transporter = _nodemailer.createTransport.call(void 0, {
         service: 'gmail',
+        tls: {
+          rejectUnauthorized: false,
+        },
         auth: {
           type: 'OAuth2',
           user: process.env.MAIL_USERNAME,
@@ -20,7 +23,7 @@ class EmailsController {
         from: req.body.emailFrom,
         to: req.body.destinatary,
         subject: 'Nodemailer Project',
-        text: 'Hi from your nodemailer project',
+        text: 'Testando',
       };
 
       transporter.sendMail(mailOptions, (err, data) => {
