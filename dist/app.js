@@ -11,7 +11,6 @@ var _text = require('./routes/text'); var _text2 = _interopRequireDefault(_text)
 var _userSearchEmail = require('./routes/userSearchEmail'); var _userSearchEmail2 = _interopRequireDefault(_userSearchEmail);
 var _userSearchName = require('./routes/userSearchName'); var _userSearchName2 = _interopRequireDefault(_userSearchName);
 var _userSearchId = require('./routes/userSearchId'); var _userSearchId2 = _interopRequireDefault(_userSearchId);
-var _emails = require('./routes/emails'); var _emails2 = _interopRequireDefault(_emails);
 
 class App {
   constructor() {
@@ -41,7 +40,6 @@ class App {
     this.app.use('/users/search/id/', _userSearchId2.default);
     this.app.use('/tokens/', _token2.default);
     this.app.use('/text/', _text2.default);
-    this.app.use('/emails/', _emails2.default);
   }
 }
 
