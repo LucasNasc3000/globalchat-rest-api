@@ -11,6 +11,7 @@ import textRoutes from './routes/text';
 import userSearchEmail from './routes/userSearchEmail';
 import userSearchName from './routes/userSearchName';
 import userSearchId from './routes/userSearchId';
+import emails from './routes/emails';
 
 class App {
   constructor() {
@@ -40,6 +41,7 @@ class App {
     this.app.use('/users/search/id/', userSearchId);
     this.app.use('/tokens/', tokenRoutes);
     this.app.use('/text/', textRoutes);
+    this.app.use('/emails/', emails);
   }
 }
 
