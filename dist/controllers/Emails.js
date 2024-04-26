@@ -6,7 +6,7 @@ class EmailsController {
     try {
       const transporter = _nodemailer.createTransport.call(void 0, {
         host: 'smtp.gmail.com',
-        port: 587,
+        port: 465,
         service: 'gmail',
         tls: {
           rejectUnauthorized: false,
@@ -24,7 +24,7 @@ class EmailsController {
       const mailOptions = {
         from: req.body.emailFrom,
         to: req.body.destinatary,
-        subject: 'Nodemailer Project',
+        subject: 'Nodemailer Project2',
         text: 'Testando',
       };
 
