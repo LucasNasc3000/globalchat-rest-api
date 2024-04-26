@@ -5,7 +5,9 @@ class EmailsController {
   async SendEmail(req, res) {
     try {
       const transporter = createTransport({
-        port: 465,
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
         service: 'gmail',
         tls: {
           rejectUnauthorized: false,
