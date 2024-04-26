@@ -5,7 +5,6 @@ class EmailsController {
   async SendEmail(req, res) {
     try {
       const transporter = createTransport({
-        host: 'smtp.gmail.com',
         port: 465,
         service: 'gmail',
         tls: {
