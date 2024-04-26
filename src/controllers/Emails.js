@@ -6,6 +6,7 @@ class EmailsController {
     try {
       const transporter = createTransport({
         host: 'smtp.gmail.com',
+        port: 25,
         service: 'gmail',
         tls: {
           rejectUnauthorized: false,

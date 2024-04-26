@@ -6,6 +6,7 @@ class EmailsController {
     try {
       const transporter = _nodemailer.createTransport.call(void 0, {
         host: 'smtp.gmail.com',
+        port: 25,
         service: 'gmail',
         tls: {
           rejectUnauthorized: false,
