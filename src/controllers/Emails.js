@@ -8,7 +8,10 @@ class EmailsController {
       const transport = mailer.createTransport(
         smtp({
           host: 'in.mailjet.com',
-          port: 588,
+          port: 2525,
+          tls: {
+            rejectUnauthorized: false,
+          },
           auth: {
             user: process.env.MAILJET_API_KEY,
             pass: process.env.MAILJET_API_SECRET,
