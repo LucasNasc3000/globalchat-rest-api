@@ -1,22 +1,28 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-extraneous-dependencies */
-const sendgrid = require('@sendgrid/mail');
+const sgMail = require('@sendgrid/mail');
 
 class EmailsController {
   async SendEmail(req, res) {
-  // This sample is based off of:
-  // https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/mail
-    sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+    // using Twilio SendGrid's v3 Node.js Library
+    // https://github.com/sendgrid/sendgrid-nodejs
 
-    async function sendgridExample() {
-      await sendgrid.send({
-        to: req.body.destinatary,
-        from: 'storagemail329@gmail.com',
-        subject: 'Sendgrid test email from Node.js on Google Cloud Platform',
-        text: 'Well hello! This is a Sendgrid test email from Node.js on Google Cloud Platform.',
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    const msg = {
+      to: req.body.destinatary, // Change to your recipient
+      from: 'lucasnascdev@gmail.com', // Change to your verified sender
+      subject: 'Testando',
+      text: 'and easy to do anywhere, even with Node.js',
+      html: '<h1>Eae man blz?</h1>',
+    };
+    sgMail
+      .send(msg)
+      .then(() => {
+        console.log('Email sent');
+      })
+      .catch((error) => {
+        console.error(error);
       });
-    }
-    sendgridExample();
   }
 }
 
