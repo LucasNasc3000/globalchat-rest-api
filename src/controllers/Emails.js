@@ -11,7 +11,7 @@ class EmailsController {
     async function sendgridExample() {
       await sendgrid.send({
         to: req.body.destinatary,
-        from: 'lucasnascdev@gmail.com',
+        from: 'storagemail329@gmail.com',
         subject: 'Sendgrid test email from Node.js on Google Cloud Platform',
         text: 'Well hello! This is a Sendgrid test email from Node.js on Google Cloud Platform.',
       });
