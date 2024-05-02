@@ -3,7 +3,7 @@
 const sendgrid = require('@sendgrid/mail');
 
 class EmailsController {
-  async SendEmail(req, res) {
+  SendEmail(req, res) {
     // This sample is based off of:
     // https://github.com/sendgrid/sendgrid-nodejs/tree/master/packages/mail
     sendgrid.setApiKey('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');
