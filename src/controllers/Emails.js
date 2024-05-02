@@ -10,7 +10,7 @@ class EmailsController {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     const msg = {
       to: req.body.destinatary, // Change to your recipient
-      from: 'lucasnascdev@gmail.com', // Change to your verified sender
+      from: 'storagemail329@gmail.com', // Change to your verified sender
       subject: 'Testando',
       text: 'and easy to do anywhere, even with Node.js',
       html: '<h1>Eae man blz?</h1>',
