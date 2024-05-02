@@ -7,7 +7,7 @@ class EmailsController {
     // using Twilio SendGrid's v3 Node.js Library
     // https://github.com/sendgrid/sendgrid-nodejs
 
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    sgMail.setApiKey('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');
     const msg = {
       to: req.body.destinatary, // Change to your recipient
       from: 'storagemail329@gmail.com', // Change to your verified sender
