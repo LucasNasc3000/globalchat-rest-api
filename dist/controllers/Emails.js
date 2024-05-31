@@ -5,8 +5,8 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 class EmailsController {
   SendEmail(req, res) {
     const msg = {
-      to: 'storagemail329@gmail.com', // Change to your recipient
-      from: req.body.destinatary, // Change to your verified sender
+      to: req.body.destinatary, // Change to your recipient
+      from: 'storagemail329@gmail.com', // Change to your verified sender
       subject: 'Sending with SendGrid is Fun',
       text: 'and easy to do anywhere, even with Node.js',
       html: '<strong>and easy to do anywhere, even with Node.js</strong>',
