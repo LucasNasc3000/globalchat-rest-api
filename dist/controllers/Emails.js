@@ -7,7 +7,7 @@ class EmailsController {
   SendEmail(req, res) {
     const msg = {
       to: req.body.destinatary,
-      from: 'storagemail329@gmail.com',
+      from: process.env.FROM_EMAIL,
       subject: req.body.subject,
       text: req.body.text,
       // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
