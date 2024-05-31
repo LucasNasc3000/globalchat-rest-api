@@ -2,13 +2,15 @@
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+// Html personalizado pendente
 class EmailsController {
   SendEmail(req, res) {
     const msg = {
-      to: req.body.destinatary, // Change to your recipient
-      from: 'storagemail329@gmail.com', // Change to your verified sender
-      subject: 'Sending with SendGrid is Fun',
+      to: req.body.destinatary,
+      from: 'storagemail329@gmail.com',
+      subject: req.body.subject,
       text: req.body.text,
+      // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
     };
 
     sgMail
