@@ -5,6 +5,12 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 // Html personalizado pendente
 class EmailsController {
   SendEmail(req, res) {
+    const { isAdmin } = req.body;
+
+    if (isAdmin !== process.env.SEND_EMAIL_PASSWORD) {
+      return res.json('Admin login required');
+    }
+
     const msg = {
       to: req.body.destinatary,
       from: process.env.FROM_EMAIL,
@@ -13,7 +19,7 @@ class EmailsController {
       // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
     };
 
-    sgMail
+    return sgMail
       .send(msg)
       .then((response) => {
         console.log(response[0].statusCode);
