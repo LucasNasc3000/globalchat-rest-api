@@ -8,7 +8,7 @@ class EmailsController {
       to: req.body.destinatary, // Change to your recipient
       from: 'storagemail329@gmail.com', // Change to your verified sender
       subject: 'Sending with SendGrid is Fun',
-      text: 'and easy to do anywhere, even with Node.js',
+      text: req.body.text,
       html: '<strong>and easy to do anywhere, even with Node.js</strong>',
     };
 
