@@ -7,7 +7,7 @@ class EmailsController {
   SendEmail(req, res) {
     const { isAdmin } = req.body;
 
-    if (isAdmin !== process.env.SEND_EMAIL_PASSWORD) {
+    if (!isAdmin || isAdmin !== process.env.SEND_EMAIL_PASSWORD) {
       return res.status(500).json({
         errors: ['Admin password required'],
       });
