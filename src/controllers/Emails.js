@@ -1,13 +1,9 @@
-import dotenv from 'dotenv';
-
-dotenv.config();
-
 const sgMail = require('@sendgrid/mail');
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 class EmailsController {
   SendEmail(req, res) {
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
     const msg = {
       to: 'storagemail329@gmail.com', // Change to your recipient
       from: req.body.destinatary, // Change to your verified sender

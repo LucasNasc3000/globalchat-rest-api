@@ -1,13 +1,9 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _dotenv = require('dotenv'); var _dotenv2 = _interopRequireDefault(_dotenv);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});const sgMail = require('@sendgrid/mail');
 
-_dotenv2.default.config();
-
-const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 class EmailsController {
   SendEmail(req, res) {
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
     const msg = {
       to: 'storagemail329@gmail.com', // Change to your recipient
       from: req.body.destinatary, // Change to your verified sender
